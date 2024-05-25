@@ -1,11 +1,224 @@
 .App {
   text-align: center;
 }
+.p-red{
+  color: red;
+}
 
+.crd{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  margin-top: 20px;
+}
+.crd-img{
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+.crd-title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.like{
+  width: 2rem;
+  height: 2rem;
+}
+.like-btn{
+  border: none;
+  background-color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+.btn-int-div{
+
+}
+.btn-int{
+  background-color: rgb(52, 180, 43);
+  border-color:rgb(52, 180, 43); ;
+}
+.btn-int:hover{
+  background-color:rgb(59, 124, 54); ;
+}
+.edit-btn{
+  border: none;
+  background-color: rgb(43, 113, 210);
+}
+.editMd{
+  width: 1.5rem;
+  height: 1.5rem;
+  color: rgb(255, 255, 255);
+}
+.deleteMd{
+  width: 1.5rem;
+  height: 1.5rem;
+  color: rgb(255, 255, 255);
+}
+.delete-btn{
+  border: none;
+  background-color: rgb(201, 63, 42);
+
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.relative{
+  position: relative;
+}
+.outline-cancel{
+  position: absolute;
+  left: 25%;
+  top: 0;
+}
+.seller-details{
+  margin-top: 10px;
+}
+.outline-cancel-btn{
+  width: 1.5rem;
+  height: 1.5rem;
+  color: red;
+}
+.outline-btn{
+  background-color: white;
+  border: none;
+}
+.outline-btn:hover{
+  background-color: white;
+}
+
+/**/
+.parent-component {
+  display: flex;
+}
+
+.filter-bar {
+  width: 250px;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.property-list {
+  flex: 1;
+  padding: 20px;
+}
+
+.property {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+
+.page-item {
+  margin: 0 5px;
+}
+
+.page-item.active .page-link {
+  background-color: #007bff;
+  color: white;
+}
+.page-item:first-child .page-link {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.page-item:last-child .page-link {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.page-link {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.page-link:hover {
+  background-color: #f0f0f0;
+}
+.pagination-center{
+
+}
+
+nav {
+  background-color: #1c7266;
+  padding: 1em;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav ul li {
+  margin: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  transition: background-color 0.3s;
+  font-size: larger;
+  font-weight: 600;
+}
+
+nav ul li a:hover {
+  background-color: #555;
+}
+
+.property-form{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.rgs-btn{
+  margin-right: 20px;
+  background-color: rgb(76, 119, 220);
+  border: none;
+}
+
+.ccl-btn{
+  background-color: rgb(230, 66, 80);
+  border: none;
+}
+.bg-1{
+  background-image: linear-gradient(rgb(107, 239, 228), rgb(49, 235, 104));
+  min-height: 100vh;
+  width: 100vw;
+}
+.login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
