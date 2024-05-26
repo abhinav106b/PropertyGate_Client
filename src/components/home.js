@@ -53,6 +53,10 @@ function Home(){
         );
     });
 
+    const clearUserData=()=>{
+        setUserData(null);
+    }
+
     const productPerPage = 4;
 
     //Pagination
@@ -65,7 +69,7 @@ function Home(){
 
     return(
         <div className='App'>
-            <Header userData={userData} />
+            <Header userData={userData} clearData={clearUserData} />
             <h1>Home Page</h1>
             {/* {userData? <h4>{userData?.firstName}  {userData?.email}</h4>:<></>}
             {userData?<></>:<><Link to='/register'>Register</Link><br/></>}

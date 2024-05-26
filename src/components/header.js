@@ -24,7 +24,8 @@ function Header(props){
         .then((succ)=>{
             localStorage.removeItem('token');
             alert("successfully logedout")
-            setUserData(null)
+            setUserData(null);
+            props?.clearData();
         })
         .catch((err)=>{
             alert("error in logout : ",err)
@@ -47,7 +48,7 @@ function Header(props){
                 <ul>
                     {userData?<></>:<li><Link to='/register'>Register</Link><br/></li>}
                     {userData?<li><Link onClick={logOut}>Logout</Link></li>:<li><Link to="/login">Login</Link></li>}
-                   
+                    {userData?<p className="clr-white">Hi! {userData?.firstName}</p>:<></>}
                 </ul>
                 </div>
             </div>

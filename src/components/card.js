@@ -4,7 +4,7 @@ import { FcLikePlaceholder,  FcLike } from "react-icons/fc";
 import { MdEdit,MdDelete,MdOutlineCancel } from "react-icons/md";
 import axios from 'axios';
 import PropertyForm from './propertyForm';
-import { DeleteRequest } from '../global/post';
+import { DeleteRequest, PostRequest } from '../global/post';
 import { GetRequest } from '../global/getReq';
 import {useNavigate} from 'react-router-dom'
 
@@ -73,11 +73,26 @@ function CardCom(props){
             alert("Please login to see seller details")
         }
         else{
+            console.log("UserData Doneeeeee", props?.userData )
             setIntBtn(true);
             GetRequest(`users/${props?.data?.sellerId}`)
             .then((rsp)=>{
                 console.log("Seller data  ",rsp.data);
-                setSellerData(rsp.data?.data)
+                setSellerData(rsp.data?.data);
+                let emailBody ={
+                    buyerEmail: props?.userData?.email,
+                    sellerEmail: rsp.data?.data?.email,
+                    buyerDetails: props?.userData,
+                    sellerDetails: rsp.data?.data
+                }
+                PostRequest("sendMail",emailBody)
+                .then((succ)=>{
+                    alert("Email sent successfully");
+                })
+                .catch((err)=>{
+                    console.log(err);
+                    alert("Error while sending email");
+                })
             })
             .catch((err)=>{
                 console.log("Error while getting seller data  ",err);
@@ -85,6 +100,11 @@ function CardCom(props){
             })
         }
     }
+    useEffect(()=>{
+        if(props?.userData === null){
+            setSellerData(null);
+        }
+    },[props?.userData])
 
 
     return(
@@ -114,7 +134,7 @@ function CardCom(props){
                         <CardTitle className='crd-title'>₹{props?.data?.price} ,{props?.data?.title} {props?.sellerProperty?<></>:<button onClick={onLikeClick} className='like-btn'>{likebtn?<FcLike className='like'/>:<FcLikePlaceholder className='like' />} {likeCnt}</button>}</CardTitle>
                         <p>{props?.data?.aptType} FLat</p>
                         <p>{props?.data?.description}</p>
-                        <p>{props?.data?.locatioin}</p>
+                        <p>{props?.data?.location}</p>
                         <p>Bathrooms: {props?.data?.bathrooms}</p>
                         <p>CLose to Hospital || Close to Markets || close to Malls</p>
                         <div className='btn-int-div'>
