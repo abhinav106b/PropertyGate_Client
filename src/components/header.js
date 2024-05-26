@@ -41,6 +41,7 @@ function Header(props){
                     <li><Link to="/">Home</Link></li>
                     {userData && userData?.role=="seller"?<li><Link to="/propertyForm">Add property</Link><br/></li>:<></>}
                     {userData && userData.role=="seller"?<li><Link to="/viewSeller">View my properties</Link><br/></li>:<></>}
+                    <h3 className="rentify">Rentify</h3>
                     
                 </ul>
                 </div>
