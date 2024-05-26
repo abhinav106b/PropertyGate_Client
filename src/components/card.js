@@ -24,7 +24,7 @@ function CardCom(props){
 
     const onLikeClick =()=>{
         if(likebtn){
-            axios.patch(`http://localhost:3000/property/dislike/${props?.data?._id}`)
+            axios.patch(`${process.env.REACT_APP_BASEURL}/property/dislike/${props?.data?._id}`)
             .then((done)=>{
                 setLikebtn(false);
                 setLikeCnt(likeCnt-1);
@@ -34,7 +34,7 @@ function CardCom(props){
                 alert("Please login")            })
         }
         else{
-            axios.patch(`http://localhost:3000/property/like/${props?.data?._id}`)
+            axios.patch(`${process.env.REACT_APP_BASEURL}/property/like/${props?.data?._id}`)
             .then((done)=>{
                 setLikebtn(true)
                 setLikeCnt(likeCnt+1);
