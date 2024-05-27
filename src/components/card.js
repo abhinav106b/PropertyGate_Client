@@ -36,6 +36,7 @@ function CardCom(props){
         else{
             axios.patch(`${process.env.REACT_APP_BASEURL}/property/like/${props?.data?._id}`)
             .then((done)=>{
+                console.log("property like ",props?.data?._id);
                 setLikebtn(true)
                 setLikeCnt(likeCnt+1);
             })
@@ -74,11 +75,11 @@ function CardCom(props){
         }
         else{
             console.log("UserData Doneeeeee", props?.userData )
-            setIntBtn(true);
             GetRequest(`users/${props?.data?.sellerId}`)
             .then((rsp)=>{
                 console.log("Seller data  ",rsp.data);
                 setSellerData(rsp.data?.data);
+                setIntBtn(true);
                 let emailBody ={
                     buyerEmail: props?.userData?.email,
                     sellerEmail: rsp.data?.data?.email,
@@ -116,21 +117,21 @@ function CardCom(props){
                 </ModalBody>
             </Modal>
         
-        <Card className='crd'>
+        <Card key={props?.data?._id} className='crd'>
             <CardBody>
                 <div className='row'>
                     <div className='col-4'>
                         <CardImg top className='crd-img' src={props?.data?.image? props?.data?.image:"https://media.self.com/photos/630635c30b7f36ce816f374a/4:3/w_2240,c_limit/DAB03919-10470989.jpg"} alt='apt image' />
                     </div>
                     <div className='col-8'>
-                        <CardTitle className='crd-title'>₹{props?.data?.price} ,{props?.data?.title} {props?.sellerProperty?<></>:<button onClick={onLikeClick} className='like-btn'>{likebtn?<FcLike className='like'/>:<FcLikePlaceholder className='like' />} {likeCnt}</button>}</CardTitle>
+                        <CardTitle className='crd-title'>₹{props?.data?.price} ,{props?.data?.title} {props?.sellerProperty?<></>:<button key={props?.data?._id} onClick={onLikeClick} className='like-btn'>{likebtn?<FcLike className='like'/>:<FcLikePlaceholder className='like' />} {likeCnt}</button>}</CardTitle>
                         <p>{props?.data?.aptType} FLat</p>
                         <p>{props?.data?.description}</p>
                         <p>{props?.data?.location}</p>
                         <p>Bathrooms: {props?.data?.bathrooms}</p>
                         <p>CLose to Hospital || Close to Markets || close to Malls</p>
                         <div className='btn-int-div'>
-                            {props?.sellerProperty?<div className='flex-row'><Button onClick={toggleModal} className='edit-btn'>Edit <MdEdit className='editMd' /></Button><Button onClick={onClickDelete} className='delete-btn'>Delete<MdDelete className='deleteMd'/></Button></div>:<Button onClick={onInterestedBtnClick} className='btn-int'>I am Interested</Button>}
+                            {props?.sellerProperty?<div className='flex-row'><Button onClick={toggleModal} className='edit-btn'>Edit <MdEdit className='editMd' /></Button><Button onClick={onClickDelete} className='delete-btn'>Delete<MdDelete className='deleteMd'/></Button></div>:<Button key={props?.data?._id} onClick={onInterestedBtnClick} className='btn-int'>I am Interested</Button>}
                         </div>
                     </div>
                 </div>

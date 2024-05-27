@@ -85,9 +85,11 @@ function Home(){
                     <FilterBar filters={filters} onFilterChange={handleFilterChange} />
                 </div>
                 {!loading?<div className='col-9'>
-                    {currentProperties.map((ele)=>{
+                    {currentProperties.map((ele,index)=>{
                         return(
+                            <div key={index+1}>
                             <CardCom data={ele} userData ={userData}/>
+                            </div>
                         );
                     })}
                 </div>:<div className='col-9'></div>}
