@@ -14,6 +14,7 @@ function Home(){
     const [propertyData, setPropertyData] = useState([]);
     const [userData,setUserData] = useState(null);
     const [currentPage,setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(false);
     const [filters, setFilters] = useState({
         price: '',
         aptType: '',
@@ -26,10 +27,12 @@ function Home(){
 
     useEffect(()=>{
         console.log(process.env.REACT_APP_BASEURL,"hello");
+        setLoading(true);
         GetRequest('property/')
         .then((data)=>{
             console.log(data.data?.data);
             setPropertyData(data.data?.data);
+            setLoading(false);
         })
         .catch((err)=>{
             console.log(err)
@@ -71,6 +74,7 @@ function Home(){
         <div className='App'>
             <Header userData={userData} clearData={clearUserData} />
             <h1>Home Page</h1>
+            {loading?<div><h3>Loading ...</h3></div>:<></>}
             {/* {userData? <h4>{userData?.firstName}  {userData?.email}</h4>:<></>}
             {userData?<></>:<><Link to='/register'>Register</Link><br/></>}
             {userData?<Link onClick={logOut}>Logout</Link>:<Link to="/login">Login</Link>}<br/>
@@ -80,13 +84,13 @@ function Home(){
                 <div className='col-3'>
                     <FilterBar filters={filters} onFilterChange={handleFilterChange} />
                 </div>
-                <div className='col-9'>
+                {!loading?<div className='col-9'>
                     {currentProperties.map((ele)=>{
                         return(
                             <CardCom data={ele} userData ={userData}/>
                         );
                     })}
-                </div>
+                </div>:<div className='col-9'></div>}
             </div>
             <div className='pagination-center'>
                 <Pagination 
