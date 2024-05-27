@@ -91,8 +91,8 @@ function PropertyForm(props){
                     </div>
                     </div>
                     <div className="mt-4">
-                    {props?.modal?<><Button className="rgs-btn" type="submit">Confirm</Button><Button className="ccl-btn" type="button" onClick={props?.toggle}>Cancel</Button></>:<Button className="rgs-btn" type="submit">Add property</Button>}
-                    <Button className="ccl-btn" onClick={()=>{navigate('/',{replace:true})}} type="submit">Cancel</Button>
+                    {props?.modal?<><Button className="rgs-btn" type="submit">Confirm</Button><Button className="ccl-btn" type="button" onClick={props?.toggle}>Cancel</Button></>:<><Button className="rgs-btn" type="submit">Add property</Button><Button className="ccl-btn" onClick={()=>{navigate('/',{replace:true})}} type="submit">Cancel</Button></>}
+                    
                     </div>
                 </form>
             </div>

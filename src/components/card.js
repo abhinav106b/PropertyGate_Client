@@ -109,19 +109,11 @@ function CardCom(props){
 
     return(
         <div key={props?.data._id}>
-            <Modal isOpen={modal} toggle={toggleModal}>
+            <Modal fullscreen isOpen={modal} toggle={toggleModal}>
                 <ModalHeader toggle={toggleModal}>Modal title</ModalHeader>
                 <ModalBody>
                     <PropertyForm propertyData={props?.data} reload={reloadOnEdit} modal={true} toggle={toggleModal}/>
                 </ModalBody>
-                <ModalFooter>
-                <Button color="primary" onClick={toggleModal}>
-                    Do Something
-                </Button>{' '}
-                <Button color="secondary" onClick={toggleModal}>
-                    Cancel
-                </Button>
-                </ModalFooter>
             </Modal>
         
         <Card className='crd'>
