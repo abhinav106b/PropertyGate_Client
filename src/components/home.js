@@ -74,7 +74,7 @@ function Home(){
         <div className='App'>
             <Header userData={userData} clearData={clearUserData} />
             <h1>Home Page</h1>
-            {loading?<div><h3>Loading ...</h3></div>:<></>}
+            {loading?<div><h3>Loading ...<p className='load-p'>Note: It might take 20-40 seconds to load as backend is deployed in free tier</p></h3></div>:<></>}
             {/* {userData? <h4>{userData?.firstName}  {userData?.email}</h4>:<></>}
             {userData?<></>:<><Link to='/register'>Register</Link><br/></>}
             {userData?<Link onClick={logOut}>Logout</Link>:<Link to="/login">Login</Link>}<br/>
